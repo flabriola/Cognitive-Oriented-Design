@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build-paper": "./build_paper.sh",
+    "deploy": "npm run build && git add dist -f && git commit -m 'deploy' && git push origin main"
   },
   "dependencies": {
     "react": "^19.1.1",

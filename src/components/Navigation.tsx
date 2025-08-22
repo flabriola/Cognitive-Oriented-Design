@@ -1,97 +1,111 @@
-import React, { useState, useEffect } from 'react';
-import type { Section, NavigationItem } from '../types';
-import './Navigation.css';
+import React, { useEffect, useMemo, useState } from "react";
+import type { Section } from "../types";
+import "./Navigation.css";
 
 interface NavigationProps {
   sections: Section[];
   activeSection: string;
   onSectionChange: (sectionId: string) => void;
+  density?: number;      // 0..1 portion of top→bottom arc
 }
 
-const Navigation: React.FC<NavigationProps> = ({ sections, activeSection, onSectionChange }) => {
-  const [isVisible, setIsVisible] = useState(false);
-
+const Navigation: React.FC<NavigationProps> = ({
+  sections,
+  activeSection,
+  onSectionChange,
+  density = 0.92,
+}) => {
+  const [vh, setVh] = useState(
+    typeof window !== "undefined" ? window.innerHeight : 800
+  );
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 1000);
-    return () => clearTimeout(timer);
+    const onResize = () => setVh(window.innerHeight);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  const navigationItems: NavigationItem[] = sections.map((section) => ({
-    id: section.id,
-    number: section.order.toString().padStart(2, '0'),
-    type: 'main',
-    level: 1
-  }));
+  // Geometry: big circle with centre off-screen left
+  const R = vh * 1.35;
+  const cy = vh / 2;
+  const cx = -R * 0.65;
+  const svgWidth = R;
+  const svgHeight = vh;
 
-  // The arc should be the full height of the screen, positioned at the left edge
-  // Quarter circle that spans the full viewport height
-  const viewportHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
-  const radius = viewportHeight; // Make radius equal to viewport height for full screen arc
+  // Visible arc (top→bottom slice)
+  const arcTotal = Math.PI * density;       // e.g. ~166°
+  const startAngle = -arcTotal / 2;         // near -83°
+  const endAngle = arcTotal / 2;         // near +83°
+  const anchorAngle = 0;                    // where the ACTIVE dot should sit (middle of arc)
+
+  // Path for bezel line
+  const arcPath = useMemo(() => {
+    const sx = cx + R * Math.cos(startAngle);
+    const sy = cy + R * Math.sin(startAngle);
+    const ex = cx + R * Math.cos(endAngle);
+    const ey = cy + R * Math.sin(endAngle);
+    const largeArcFlag = arcTotal > Math.PI ? 1 : 0;
+    return `M ${sx} ${sy} A ${R} ${R} 0 ${largeArcFlag} 1 ${ex} ${ey}`;
+  }, [cx, cy, R, startAngle, endAngle, arcTotal]);
+
+  // Items
+  const items = useMemo(() => sections.map(s => ({ id: s.id })), [sections]);
+  const activeIndex = Math.max(
+    0,
+    items.findIndex(i => i.id === activeSection)
+  );
+
+  // Base angles for each item (evenly spaced along visible arc)
+  const baseAngles = useMemo(() => {
+    const n = Math.max(1, items.length);
+    return items.map((_, i) => {
+      const t = n === 1 ? 0.5 : i / (n - 1);
+      return startAngle + t * (endAngle - startAngle);
+    });
+  }, [items, startAngle, endAngle]);
+
+  // Compute phase so ACTIVE lands on anchorAngle
+  const phase = useMemo(() => {
+    if (items.length === 0) return 0;
+    return anchorAngle - baseAngles[activeIndex];
+  }, [anchorAngle, baseAngles, activeIndex, items.length]);
+
+  // Final positions (with phase applied)
+  const dots = useMemo(() => {
+    return items.map((it, i) => {
+      const a = baseAngles[i] + phase;
+      const x = cx + R * Math.cos(a);
+      const y = cy + R * Math.sin(a);
+      return { id: it.id, x, y };
+    });
+  }, [items, baseAngles, phase, cx, cy, R]);
 
   return (
-    <nav className={`navigation ${isVisible ? 'visible' : ''}`}>
-      <div className="navigation-container">
-        {/* Draw the quarter circle line - full height, positioned at left edge */}
-        <svg 
-          className="bezel-arc" 
-          width={radius} 
-          height={viewportHeight} 
-          viewBox={`0 0 ${radius} ${viewportHeight}`}
-          style={{ 
-            position: 'fixed',
-            left: 0,
-            top: 0,
-            height: '100vh',
-            width: `${radius}px`,
-            transform: 'rotate(-90deg)',
-            transformOrigin: '0 0'
-          }}
-        >
-          <path
-            d={`M 0 ${viewportHeight} A ${radius} ${radius} 0 0 1 ${radius} 0`}
-            stroke="var(--color-border)"
-            strokeWidth="2"
-            fill="none"
-          />
-        </svg>
-        
-        {/* Position navigation items along the arc */}
-        {navigationItems.map((item, index) => {
-          const isActive = activeSection === item.id;
-          
-          // Calculate angle along the quarter circle (from top to bottom along left edge)
-          // The arc now goes from top (0,0) to bottom (0, viewportHeight)
-          const totalItems = navigationItems.length;
-          const angle = (index * 90) / (totalItems - 1); // 0° to 90°
-          const angleRad = (angle * Math.PI) / 180;
-          
-          // Calculate position on the rotated arc
-          // After rotation, the arc curves from top-left towards the right
-          const arcX = radius * Math.sin(angleRad); // Distance from left edge
-          const arcY = radius * (1 - Math.cos(angleRad)); // Distance from top
-          
+    <nav className="navigation">
+      <svg
+        className="bezel"
+        width={svgWidth}
+        height={svgHeight}
+        viewBox={`0 0 ${svgWidth} ${svgHeight}`}
+        preserveAspectRatio="xMinYMin slice"
+      >
+        <path d={arcPath} className="bezel-arc" />
+
+        {dots.map(d => {
+          const active = d.id === activeSection;
           return (
-            <button
-              key={item.id}
-              className={`navigation-item ${isActive ? 'active' : ''}`}
-              style={{
-                position: 'fixed',
-                left: `${arcX}px`,
-                top: `${arcY}px`,
-                transform: 'translate(-50%, -50%)',
-                zIndex: 101
-              }}
-              onClick={() => onSectionChange(item.id)}
-              aria-label={`Navigate to section ${item.number}`}
-            >
-              <div className="navigation-dot"></div>
-              <span className="navigation-number">{item.number}</span>
-            </button>
+            <g key={d.id} className="nav-node" transform={`translate(${d.x}, ${d.y})`}>
+              <circle
+                className={`nav-dot ${active ? "active" : ""}`}
+                r={4}                               // <- fixed
+                onClick={() => onSectionChange(d.id)}
+              />
+
+            </g>
           );
         })}
-      </div>
+      </svg>
     </nav>
   );
 };
 
-export default Navigation; 
+export default Navigation;

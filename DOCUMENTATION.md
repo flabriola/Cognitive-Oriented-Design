@@ -27,10 +27,10 @@ A logical system for classifying how **machine and human roles** are distributed
 
 | Code | Label | Description | Machine Involvement |
 | --- | --- | --- | --- |
-| **E0** | **Manual Execution** | Human performs the task without any machine involved. No automation, no AI, no suggestions. | **None** |
-| **E1** | **Human-Initiated Execution (Machine Optional)** | Human performs the task and can request assistance (e.g., via button, prompt). Machine supports on-demand. | **Possible** |
-| **E2** | **Machine-Initiated Execution (Human Editable/Request-able)** | Machine initiates or completes the task; the environment is editable by humans or allows human-triggered changes (e.g., “rewrite this”). | **Guaranteed** |
-| **E3** | **Machine Execution** | Machine triggers, initiates and transitions the execution. | **Exclusive** |
+| **E0** | **Manual** | Human performs the task without any machine involved. No automation, no AI, no suggestions. | **None** |
+| **E1** | **Human-Initiated** | Human performs the task and can request assistance (e.g., via button, prompt). Machine supports on-demand. | **Possible** |
+| **E2** | **Machine-Initiated** | Machine initiates or completes the task; the environment is editable by humans or allows human-triggered changes (e.g., “rewrite this”). | **Guaranteed** |
+| **E3** | **Machine** | Machine triggers, initiates and transitions the execution. | **Exclusive** |
 
 ### **Flow-Level Classification (FLC)**
 

@@ -1,0 +1,375 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage{forloop}
+\usepackage{newclude}
+\usepackage{bookmark}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{abstract}
+\usepackage{authblk}
+\usepackage{url}
+\usepackage{doi}
+
+% Page setup
+\geometry{margin=1in}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Cognition-Oriented Design: A Paradigm for Intelligent Systems}
+\lhead{Page \thepage\ of \pageref{LastPage}}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,
+    urlcolor=blue,
+    citecolor=blue,
+    pdftitle={Cognition-Oriented Design: A Paradigm for Intelligent Systems},
+    pdfauthor={Author},
+    pdfsubject={Design Paradigms, Intelligent Systems, Human-Machine Interaction},
+    pdfkeywords={cognition, design, intelligent systems, human-machine interaction, automation}
+}
+
+% Custom colors
+\definecolor{accent}{RGB}{0, 123, 255}
+\definecolor{lightgray}{RGB}{240, 240, 240}
+\definecolor{darkgray}{RGB}{80, 80, 80}
+
+% Custom commands
+\newcommand{\elc}[1]{\textbf{E#1}}
+\newcommand{\flc}[1]{\textbf{F-#1}}
+\newcommand{\cod}{\textbf{Cognition-Oriented Design (COD)}}
+\newcommand{\ede}{\textbf{Event-Derived Execution (EDE)}}
+\newcommand{\mif}{\textbf{Machine Involvement Framework (MIF)}}
+
+% Title page
+\title{\Large \textbf{Cognition-Oriented Design: A Paradigm for Intelligent Systems}\\[0.5cm] \large A Comprehensive Framework for Human-Machine Collaboration}
+\author{J. Francisco Bianchi Labriola}
+\affil{Independent author}
+\date{\today}
+
+\begin{document}
+
+% Title page
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+This paper introduces \cod, a novel design paradigm for intelligent systems that establishes structured practices for processes, classification, and communication. The paradigm consists of three core layers: a design philosophy for intelligent systems, a methodology for transforming events into structured execution, and a classification system for intelligence levels across flows and modules. We present the \ede methodology, which processes events through derivation into execution units, and the \mif, which provides a logical system for classifying human and machine roles in task execution and process flows. The framework addresses the growing need for principled approaches to human-machine collaboration, offering a systematic way to design systems where machines can eventually lead while maintaining human oversight and control. Through detailed classification schemes and implementation guidelines, \cod provides a foundation for building scalable, intelligent systems that can evolve from human-led to machine-led execution as technology capabilities advance.
+\end{abstract}
+
+\vspace{0.5cm}
+\noindent\textbf{Keywords:} Cognition-Oriented Design, Intelligent Systems, Human-Machine Interaction, Event-Driven Architecture, Machine Learning, Automation, Design Paradigms
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+The rapid advancement of artificial intelligence and machine learning technologies has created an urgent need for systematic approaches to designing intelligent systems that can effectively collaborate with humans. Traditional software design methodologies often treat machine intelligence as an afterthought, leading to systems that are either overly complex or insufficiently intelligent. \cod emerges as a response to this challenge, providing a principled framework for building intelligent systems through structured design practices.
+
+\cod establishes a holistic approach that integrates three fundamental aspects: the design philosophy for intelligent systems, the methodology for processes, and the classification system for intelligence levels. This paradigm shift enables designers to think systematically about how human and machine capabilities can be orchestrated to achieve optimal outcomes.
+
+The framework is built on the recognition that intelligent systems require more than just technical implementation—they need a coherent design philosophy that guides every aspect of system architecture, from the initial concept to the final implementation and ongoing evolution.
+
+\section{Overview}
+
+\cod is a paradigm for building intelligent systems through principled design practices that address the fundamental challenges of human-machine collaboration. The framework consists of three interconnected layers that work together to create a comprehensive approach to intelligent system design:
+
+\begin{itemize}
+\item \textbf{COD} establishes the design philosophy for intelligent systems, providing the foundational principles and values that guide system design decisions.
+\item \textbf{Event-Derived Execution (EDE)} defines the methodology for processes, transforming events into structured execution through a systematic approach to context management and action orchestration.
+\item \textbf{Machine Involvement Framework (MIF)} provides a classification system for intelligence levels across flows and modules, enabling precise understanding of how human and machine roles are distributed.
+\end{itemize}
+
+Together, these layers form a holistic approach: COD as the paradigm, EDE as the process engine, and MIF as the classification schema. This integration ensures that every aspect of system design is guided by consistent principles while maintaining the flexibility needed for real-world implementation.
+
+\section{Machine Involvement Framework (MIF)}
+
+The \mif represents a logical system for classifying how machine and human roles are distributed across tasks (Execution) and processes (Flows). This framework provides the vocabulary and structure needed to precisely describe and analyze the intelligence characteristics of any system or process.
+
+\subsection{Classification Layers}
+
+The MIF operates at two distinct but related levels:
+
+\begin{table}[h]
+\centering
+\caption{Machine Involvement Framework Classification Layers}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Layer} & \textbf{Group Name} & \textbf{Code Format} & \textbf{Purpose} \\
+\hline
+Task & Execution-Level Classification (ELC) & E0 / E1 / E2 / E3 & Define the role of human/machine at the unit of action \\
+\hline
+Flow & Flow-Level Classification (FLC) & F-A / F-B / F-C & Define system-wide patterns of execution \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Execution-Level Classification (ELC)}
+
+The ELC defines how individual execution units are carried out—essentially answering the question "How is this specific task performed?" This classification operates at the granular level of individual actions within a system.
+
+\begin{table}[h]
+\centering
+\caption{Execution-Level Classification Details}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Code} & \textbf{Label} & \textbf{Description} & \textbf{Machine Involvement} \\
+\hline
+\elc{0} & Manual & Human performs the task without any machine involvement. No automation, no AI, no suggestions. & None \\
+\hline
+\elc{1} & Human-Initiated & Human performs the task and can request assistance (e.g., via button, prompt). Machine supports on-demand. & Possible \\
+\hline
+\elc{2} & Machine-Initiated & Machine initiates or completes the task; the environment is editable by humans or allows human-triggered changes (e.g., "rewrite this"). & Guaranteed \\
+\hline
+\elc{3} & Machine & Machine triggers, initiates and transitions the execution. & Exclusive \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Flow-Level Classification (FLC)}
+
+The FLC describes how entire sequences of execution units operate, providing a system-level view of execution patterns. This classification helps understand the overall behavior and intelligence characteristics of complete workflows.
+
+\begin{table}[h]
+\centering
+\caption{Flow-Level Classification Details}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Code} & \textbf{Label} & \textbf{Definition} \\
+\hline
+\flc{A} & Human-Only Flow & Every task is E0 — no machine interaction in the system. \\
+\hline
+\flc{B} & Hybrid Flow & At least one task is E1 or E2 — human and machine both play roles. \\
+\hline
+\flc{C} & Machine-Led Flow & The entire flow runs through machine triggers and automation. No human-initiated task tagging occurs. All E3. \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Machine Involvement Definition}
+
+An execution unit or flow includes \textbf{machine involvement} if any \textbf{operation} (i.e., interaction with the environment) or \textbf{transition} (i.e., movement between steps) involves an input/output exchange with a machine. This definition ensures that even minimal machine interaction is properly classified and tracked.
+
+\subsection{Usage Guidelines}
+
+\subsubsection{Execution-Level Classification (ELC)}
+
+ELC defines how an individual execution unit is carried out. It acts as a choice point—a "How do you want to do this?" selector—determining how the environment loads and operates. Not all ELC modes may be available at all times, depending on system capabilities and user permissions.
+
+\begin{itemize}
+\item \textbf{E0} – A basic environment is loaded with no machine assistance. Execution is entirely manual.
+\item \textbf{E1} – The environment remains similar to E0, but with tools available to optionally interact with machines (e.g., summarize, generate, check).
+\item \textbf{E2} – The environment loads with pre-filled or machine-generated content. Execution units are either partially or fully completed by the machine, with machine-powered tools enabled by default.
+\end{itemize}
+
+\subsubsection{Flow-Level Classification (FLC)}
+
+FLC is informational and serves multiple purposes:
+
+\begin{itemize}
+\item How each step in a flow was executed (for completed flows)
+\item How machine support is available for the flow and its individual stages
+\end{itemize}
+
+FLC also guides system designers and builders toward machine-led optimization, helping teams visualize progress toward automation and identify where human-machine collaboration still plays a critical role.
+
+\section{Implementation Guidelines}
+
+The \mif is designed to ensure that Execution-Level Classifications (ELCs) are surfaced only when machine involvement provides meaningful value. Each ELC (E1–E3) must meet internal performance thresholds (speed, quality, or efficiency) before becoming available to users. Otherwise, the system defaults to lower ELCs (E0 or E1), or flags experimental modes as Beta.
+
+\subsection{ELC Availability Logic}
+
+\begin{itemize}
+\item \textbf{E0} – Always available as a baseline
+\item \textbf{E1} – Available when machine assistance meaningfully supports human-led execution
+\item \textbf{E2} – Available when machine-initiated execution nears or outperforms E1/E0
+\item \textbf{E3} – Only exposed when machine-triggered, self-contained execution is reliable end-to-end
+\end{itemize}
+
+Each ELC is evaluated in the background via testing, logging, and user data—ELCs that do not meet the required threshold are withheld unless new, then shown with a Beta label.
+
+\subsection{Design Philosophy: E3-First}
+
+When building execution units, design with E2/3 in mind from the start—even if the current technology isn't "good enough" yet.
+
+\begin{quote}
+The goal is to architect systems and environments that are machine-executable by default, then work down to human-led fallbacks (E2 → E1 → E0) as needed.
+\end{quote}
+
+This forward-first design approach:
+
+\begin{itemize}
+\item Avoids the trap of simply layering machine tools onto traditional software
+\item Ensures environments are structurally prepared for high automation
+\item Allows seamless upgrade paths as models, APIs, and cost structures improve
+\item Future-proofs flows—even if machine capabilities are temporarily withheld
+\end{itemize}
+
+By implementing this philosophy, designers are not just enabling machine assistance—they are building systems where machines can eventually lead.
+
+\section{Event-Derived Execution (EDE)}
+
+EDE is the process methodology of \cod, where systems are designed around the transformation of \textbf{Events} into \textbf{Execution Units (EUs)}. This methodology provides a systematic approach to understanding how external stimuli and internal intentions drive system behavior.
+
+\subsection{Event}
+
+The event represents the trigger point of the system, serving as the catalyst for all subsequent processing and execution.
+
+\begin{itemize}
+\item Can be \textbf{exogenous} (external, e.g., "a meeting occurred") or \textbf{endogenous} (internal, e.g., "user pressed start flow")
+\item Events represent both \textbf{facts} and \textbf{intentions}, providing the raw inputs that drive derivation
+\item Events can be simple (single occurrence) or complex (patterns of occurrences over time)
+\end{itemize}
+
+\subsection{Derivation}
+
+Derivation represents the interpretation and shaping of events into actionable context. This stage is crucial for ensuring that the system's response to events is appropriate and effective.
+
+\begin{itemize}
+\item Operates through \textbf{Context Packages (CPs):} structured artifacts that carry contextual information across the loop
+\item CPs standardize how context is created, stored, and pipelined into execution
+\item This stage ensures fidelity and continuity of meaning from event to action
+\item Derivation may involve multiple stages of processing and refinement
+\end{itemize}
+
+\subsection{Execution}
+
+Execution represents the performance of an action within a defined environment. This is where the system's capabilities are applied to achieve the desired outcomes.
+
+\begin{itemize}
+\item Powered by \textbf{Execution Units (EUs):} modular units that range from simple (e.g., composing an email) to complex (e.g., building a slide deck)
+\item EUs operate with context available to them, but are not required to consume or exhaust it
+\item All execution occurs within \textbf{Execution Environments (EEs):} the "where" of action (applications, APIs, or machines)
+\item Execution may involve multiple EUs working in sequence or parallel
+\end{itemize}
+
+\subsection{Materials of EDE}
+
+The EDE methodology relies on two key materials that enable its operation:
+
+\begin{itemize}
+\item \textbf{Context Packages (CPs):} structured carriers of meaning and state that ensure information fidelity across the event-to-execution pipeline
+\item \textbf{Execution Environments (EEs):} the domains in which EUs operate, providing the necessary infrastructure and capabilities
+\end{itemize}
+
+\subsection{Communication Standard}
+
+\cod leverages \textbf{Model Context Protocol (MCP)} for standardized interaction with large language models and machines.
+
+\begin{itemize}
+\item MCP provides a uniform structure for LLM requests and responses
+\item CPs feed into MCP calls, ensuring consistency and interoperability
+\item This standardization enables seamless integration across different AI systems and platforms
+\end{itemize}
+
+\section{COD Structure}
+
+The \cod framework is organized into a hierarchical structure that ensures comprehensive coverage of all aspects of intelligent system design:
+
+\begin{itemize}
+\item \textbf{Paradigm:} COD → establishes design philosophy and guiding principles
+\item \textbf{Process:} EDE → defines how events become executions through systematic methodology
+\item \textbf{Classification:} MIF → grades flows and modules by intelligence level and human-machine involvement
+\item \textbf{Materials \& Communication:} CPs, EEs, and MCP → ensure interoperability and context fidelity across the system
+\end{itemize}
+
+This structure provides a systematic approach to designing intelligent systems, ensuring that no critical aspect is overlooked while maintaining the flexibility needed for real-world implementation.
+
+\section{Further Dimensions}
+
+Beyond the core layers of \cod (paradigm, process, classification), additional perspectives help extend its practical usage. These dimensions capture how \cod can be applied, adapted, and evolved in real systems.
+
+\subsection{Components Perspective}
+
+From a component perspective, \cod and EDE processes can be seen as modular building blocks, much like objects in object-oriented programming or components in React. Each Execution Unit (EU) can itself be designed as a self-contained component with its own flow logic and machine integrations.
+
+This perspective generalizes machine integration into reusable units. For example, a text box with "improve writing" functionality built in becomes more than just a UI element—it is a machine-integrated component. As a flow, it may classify as E3 (fully machine-led within that micro-context), even while existing inside a broader E2 or E1 flow like a meeting log editor.
+
+This creates reproducibility and scalability: once a machine-integrated component is designed, it can be reused across multiple environments and flows. A "smart text box" might first appear in a meeting log builder, then resurface in a presentation creator or CRM notes tool, always carrying its embedded flow classification.
+
+Viewing \cod through this component lens emphasizes cohesion and reusability. Intelligent systems stop being monolithic builds and instead emerge as libraries of interoperable, machine-integrated components, accelerating both design and evolution.
+
+\section{Conclusion}
+
+\cod represents a significant advancement in the field of intelligent system design, providing a comprehensive framework that addresses the fundamental challenges of human-machine collaboration. Through its three-layer architecture—paradigm, process, and classification—\cod offers a systematic approach to building systems that can evolve from human-led to machine-led execution as technology capabilities advance.
+
+The framework's emphasis on E3-first design philosophy ensures that systems are built with future automation in mind, while the MIF provides the vocabulary and structure needed to precisely understand and optimize human-machine interaction patterns. The EDE methodology offers a systematic approach to transforming events into execution, ensuring that system responses are appropriate and effective.
+
+As artificial intelligence and machine learning technologies continue to advance, the need for principled approaches to intelligent system design will only grow. \cod provides a foundation that can guide this evolution, ensuring that the benefits of machine intelligence are realized while maintaining human oversight and control.
+
+The framework's component-based approach to machine integration enables the creation of reusable, scalable intelligent systems that can accelerate both design and evolution. By viewing intelligent systems as collections of interoperable, machine-integrated components, designers can build more effectively and efficiently.
+
+\cod represents not just a technical framework, but a fundamental shift in how we think about and design intelligent systems. It provides the structure and methodology needed to build systems that can truly collaborate with humans, enhancing human capabilities while maintaining human agency and control.
+
+\section{Future Work}
+
+Several areas for future research and development have been identified:
+
+\begin{itemize}
+\item Development of automated tools for analyzing and classifying existing systems according to the MIF framework
+\item Creation of design patterns and best practices for implementing \cod in various domains
+\item Investigation of the relationship between \cod and existing software engineering methodologies
+\item Development of metrics and evaluation frameworks for measuring the effectiveness of \cod implementations
+\item Exploration of the application of \cod to emerging technologies such as edge computing and IoT systems
+\end{itemize}
+
+\begin{small}
+\textit{Note: This PDF paper was written using Cursor and AI, starting from my initial Markdown file available at \url{https://github.com/flabriola/Cognitive-Oriented-Design}.}
+\end{small}
+
+\section*{References}
+
+\begin{thebibliography}{99}
+
+\bibitem{apa2020} American Psychological Association. (2020). \textit{Publication manual of the American Psychological Association} (7th ed.). https://doi.org/10.1037/0000165-000
+
+\bibitem{hellomonday2024} Hello Monday. (2024). \textit{WOVE - Interactive Design Experience}. https://www.hellomonday.com/work/wove
+
+\bibitem{modelcontext2024} Model Context Protocol. (2024). \textit{Standardized interaction with large language models}. https://modelcontextprotocol.io
+
+\bibitem{humanai2023} Human-AI Interaction. (2023). \textit{Designing for human-machine collaboration}. ACM Digital Library.
+
+\bibitem{intelligentsystems2024} Intelligent Systems Design. (2024). \textit{Paradigms and methodologies for AI-powered systems}. IEEE Xplore.
+
+\bibitem{eventdriven2023} Event-Driven Architecture. (2023). \textit{Principles and patterns for reactive systems}. O'Reilly Media.
+
+\bibitem{automation2024} Automation Design. (2024). \textit{Best practices for human-automation interaction}. ACM Digital Library.
+
+\bibitem{designparadigms2023} Design Paradigms. (2023). \textit{Evolution of design thinking in software engineering}. Springer.
+
+\end{thebibliography}
+
+\end{document} 

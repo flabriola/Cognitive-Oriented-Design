@@ -2,7 +2,8 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  text-align: left;
+  height: 100vh;
 }
 
 .logo {
@@ -57,10 +58,21 @@
 }
 
 .main-content {
-  margin-left: 200px;
-  flex: 1;
-  min-height: 100vh;
-  position: relative;
+  position: fixed;
+  left: 200px;
+  top: 0;
+  height: 100vh;
+  z-index: 100;
+}
+
+/* Download section */
+.download-section {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 200;
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* Section navigation buttons */
@@ -90,6 +102,10 @@
   font-size: 0.875rem;
   font-weight: 500;
   transition: all var(--transition-normal) ease-out;
+}
+
+.nav-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-button:hover:not(:disabled) {
@@ -146,5 +162,13 @@
   
   .section-counter {
     font-size: 0.75rem;
+  }
+  
+  .download-section {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    left: 1rem;
+    justify-content: center;
   }
 }

@@ -1,22 +1,19 @@
 .content-section {
   min-height: 100vh;
-  padding: var(--spacing-2xl) 0;
+  padding: 0;
   display: flex;
   align-items: center;
   opacity: 0;
-  transform: translateY(30px);
-  transition: all var(--transition-slow) ease-out;
 }
 
 .content-section.active {
   opacity: 1;
-  transform: translateY(0);
 }
 
 /* Hero section special styling */
 .hero-section {
-  text-align: center;
-  justify-content: center;
+  text-align: left;
+  justify-content: left;
 }
 
 .hero-content {
@@ -24,10 +21,9 @@
 }
 
 .hero-quote {
-  font-size: 2.5rem;
+  font-size: 1.3rem;
   font-weight: 300;
   line-height: 1.2;
-  margin-bottom: var(--spacing-xl);
   color: var(--color-text-primary);
   font-style: italic;
   position: relative;
@@ -53,8 +49,8 @@
 }
 
 .section-header {
-  margin-bottom: var(--spacing-xl);
-  text-align: center;
+  margin-bottom: var(--spacing-md);
+  text-align: left;
 }
 
 .section-title {
@@ -68,7 +64,6 @@
   font-size: 1.125rem;
   color: var(--color-text-secondary);
   max-width: 700px;
-  margin: 0 auto;
   line-height: 1.6;
 }
 
@@ -93,10 +88,23 @@
   margin: var(--spacing-lg) 0 var(--spacing-md) 0;
 }
 
+/* Icons section */
+.icons-section {
+  margin: 0;
+  padding: 0;
+  justify-content: left;
+  align-items: left;
+}
+
+.icons-section .container {
+  padding-left: 0;
+}
+
 /* Diagram section */
 .diagram-section {
   margin: var(--spacing-xl) 0;
-  text-align: center;
+  text-align: left;
+  width: 80%;
 }
 
 .diagram-title {
@@ -111,11 +119,11 @@
 }
 
 .ede-diagram {
-  max-width: 100%;
   height: auto;
   border-radius: 8px;
-  box-shadow: var(--shadow-md);
 }
+
+
 
 /* Table styles */
 .table-container {
@@ -150,13 +158,24 @@
   font-size: 0.875rem;
 }
 
+.content-table tr {
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .content-table tr:hover {
   background: var(--color-background);
+}
+
+/* Specific styling for MIF table to make Code Format column wider */
+#mif .content-table th:nth-child(3),
+#mif .content-table td:nth-child(3) {
+  width: 30%; /* 40% wider than default ~21.4% */
 }
 
 /* List styles */
 .content-list {
   list-style: none;
+  text-align: left;
   padding: 0;
   margin: var(--spacing-lg) 0;
 }
@@ -180,6 +199,7 @@
   height: 4px;
   background: var(--color-accent);
   border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Responsive */

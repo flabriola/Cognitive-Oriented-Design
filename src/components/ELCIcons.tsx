@@ -6,7 +6,7 @@ const ELCIcons: React.FC = () => {
   return (
     <div className="elc-icons">
       <div className="container">
-        <div className="icons-grid">
+        <div className="icons-grid-elc">
           {ELC_CLASSIFICATIONS.map((classification, index) => (
             <div 
               key={classification.code} 
@@ -22,10 +22,8 @@ const ELCIcons: React.FC = () => {
               </div>
               <div className="classification-content">
                 <h4 className="classification-code">{classification.code}</h4>
-                <h5 className="classification-label">{classification.label}</h5>
-                <p className="classification-description">
-                  {classification.description}
-                </p>
+                <h5 className="classification-label-elc">{classification.label}</h5>
+
                 <div className="machine-involvement">
                   <span className="involvement-label">Machine Involvement:</span>
                   <span className="involvement-value">{classification.machineInvolvement}</span>
