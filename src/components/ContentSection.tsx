@@ -4,6 +4,9 @@ import ELCIcons from './ELCIcons';
 import FLCIcons from './FLCIcons';
 import './ContentSection.css';
 
+// Import SVG files directly
+import EDEDiagram from '/EDE-Diagram.svg';
+
 interface ContentSectionProps {
   section: Section;
   isActive: boolean;
@@ -75,7 +78,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({ section, isActive }) =>
         {section.id === 'ede-process' && (
           <div className="diagram-section">
             <div className="diagram-container">
-              <img src="/EDE-Diagram.svg" alt="EDE Diagram" className="ede-diagram" />
+              <img src={EDEDiagram} alt="EDE Diagram" className="ede-diagram" />
             </div>
           </div>
         )}

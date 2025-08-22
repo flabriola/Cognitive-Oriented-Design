@@ -20,6 +20,7 @@ const DownloadButton: React.FC = () => {
       className="download-button" 
       onClick={handleDownload}
       title="Download Academic Paper (PDF)"
+      disabled={true}
     >
       <svg 
         className="download-icon" 

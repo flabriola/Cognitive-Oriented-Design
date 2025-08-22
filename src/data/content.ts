@@ -1,33 +1,42 @@
 import type { Section, ELCClassification, FLCClassification } from '../types';
 
+// Import SVG files directly
+import E0Icon from '/E0.svg';
+import E1Icon from '/E1.svg';
+import E2Icon from '/E2.svg';
+import E3Icon from '/E3.svg';
+import FAIcon from '/F-A.svg';
+import FBIcon from '/F-B.svg';
+import FCIcon from '/F-C.svg';
+
 export const ELC_CLASSIFICATIONS: ELCClassification[] = [
   {
     code: 'E0',
     label: 'Manual',
     description: 'Human performs the task without any machine involved. No automation, no AI, no suggestions.',
     machineInvolvement: 'None',
-    icon: '/E0.svg'
+    icon: E0Icon
   },
   {
     code: 'E1',
     label: 'Human-Initiated',
     description: 'Human performs the task and can request assistance (e.g., via button, prompt). Machine supports on-demand.',
     machineInvolvement: 'Possible',
-    icon: '/E1.svg'
+    icon: E1Icon
   },
   {
     code: 'E2',
     label: 'Machine-Initiated',
     description: 'Machine initiates or completes the task; the environment is editable by humans or allows human-triggered changes (e.g., "rewrite this").',
     machineInvolvement: 'Guaranteed',
-    icon: '/E2.svg'
+    icon: E2Icon
   },
   {
     code: 'E3',
     label: 'Machine',
     description: 'Machine triggers, initiates and transitions the execution.',
     machineInvolvement: 'Exclusive',
-    icon: '/E3.svg'
+    icon: E3Icon
   }
 ];
 
@@ -36,19 +45,19 @@ export const FLC_CLASSIFICATIONS: FLCClassification[] = [
     code: 'F-A',
     label: 'Human-Only Flow',
     definition: 'Every task is E0 — no machine interaction in the system.',
-    icon: '/F-A.svg'
+    icon: FAIcon
   },
   {
     code: 'F-B',
     label: 'Hybrid Flow',
     definition: 'At least one task is E1 or E2 — human and machine both play roles.',
-    icon: '/F-B.svg'
+    icon: FBIcon
   },
   {
     code: 'F-C',
     label: 'Machine-Led Flow',
     definition: 'The entire flow runs through machine triggers and automation. No human-initiated task tagging occurs. All E3',
-    icon: '/F-C.svg'
+    icon: FCIcon
   }
 ];
 
