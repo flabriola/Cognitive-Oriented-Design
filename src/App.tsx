@@ -3,6 +3,7 @@ import Navigation from './components/Navigation';
 import ContentSection from './components/ContentSection';
 import DownloadButton from './components/DownloadButton';
 import { SECTIONS } from './data/content';
+import { getAssetPath } from './utils/paths';
 import './styles/globals.css';
 import './App.css';
 
@@ -52,57 +53,57 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [currentSectionIndex]);
 
-  // Route extension check for "/santuary"
+  // Route extension check for "/sanctuary"
   if (window.location.pathname.endsWith('/sanctuary')) {
     return (
-    // PDF Viewer for "Strategic Signals—Growth and Innovation Initiatives .pdf"
-    <div style={{ padding: '2rem', textAlign: 'center' }}>
-      <div style={{ margin: '1.5rem 0' }}>
-        <object
-          data="/Strategic Signals—Growth and Innovation Initiatives .pdf"
-          type="application/pdf"
-          width="80%"
-          height="600px"
-          aria-label="PDF Viewer"
+      // PDF Viewer for "Strategic Signals—Growth and Innovation Initiatives .pdf"
+      <div style={{ padding: '2rem', textAlign: 'center' }}>
+        <div style={{ margin: '1.5rem 0' }}>
+          <object
+            data={getAssetPath("/Strategic Signals—Growth and Innovation Initiatives .pdf")}
+            type="application/pdf"
+            width="80%"
+            height="600px"
+            aria-label="PDF Viewer"
+          >
+            <p>
+              Your browser does not support PDF viewing. You can{' '}
+              <a
+                href={getAssetPath("/Strategic Signals—Growth and Innovation Initiatives .pdf")}
+                download
+                style={{ color: '#007bff', textDecoration: 'underline' }}
+              >
+                download the PDF here
+              </a>
+              .
+            </p>
+          </object>
+        </div>
+        <a
+          href={getAssetPath("/Strategic Signals—Growth and Innovation Initiatives .pdf")}
+          download
+          className="pdf-download-link"
+          style={{
+            display: 'inline-block',
+            padding: '0.75rem 1.5rem',
+            color: '#000',
+            borderRadius: '6px',
+            textDecoration: 'none',
+            fontWeight: 600,
+            fontSize: '1rem',
+            marginTop: '1rem'
+          }}
         >
-          <p>
-            Your browser does not support PDF viewing. You can{' '}
-            <a
-              href="/Strategic Signals—Growth and Innovation Initiatives .pdf"
-              download
-              style={{ color: '#007bff', textDecoration: 'underline' }}
-            >
-              download the PDF here
-            </a>
-            .
-          </p>
-        </object>
+          Download PDF
+        </a>
       </div>
-      <a
-        href="/Strategic Signals—Growth and Innovation Initiatives .pdf"
-        download
-        className="pdf-download-link"
-        style={{
-          display: 'inline-block',
-          padding: '0.75rem 1.5rem',
-          color: '#000',
-          borderRadius: '6px',
-          textDecoration: 'none',
-          fontWeight: 600,
-          fontSize: '1rem',
-          marginTop: '1rem'
-        }}
-      >
-        Download PDF
-      </a>
-    </div>
     )
   }
-  
+
   return (
     <div className="app">
       <div className="navigation-container">
-        <Navigation 
+        <Navigation
           sections={SECTIONS}
           activeSection={activeSection}
           onSectionChange={handleSectionChange}
@@ -114,27 +115,27 @@ function App() {
         <div className="download-section">
           <DownloadButton />
         </div>
-        
-        <ContentSection 
+
+        <ContentSection
           section={SECTIONS[currentSectionIndex]}
           isActive={true}
         />
-        
+
         {/* Navigation buttons */}
         <div className="section-navigation">
-          <button 
+          <button
             className="nav-button prev-button"
             onClick={goToPreviousSection}
             disabled={currentSectionIndex === 0}
           >
             ← Previous
           </button>
-          
+
           <span className="section-counter">
             {currentSectionIndex + 1} / {SECTIONS.length}
           </span>
-          
-          <button 
+
+          <button
             className="nav-button next-button"
             onClick={goToNextSection}
             disabled={currentSectionIndex === SECTIONS.length - 1}

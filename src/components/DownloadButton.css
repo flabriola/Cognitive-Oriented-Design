@@ -17,7 +17,7 @@
 }
 
 .download-button:hover {
-  background: var(--color-accent-dark, #0056b3);
+  background: var(--color-accent-dark, #4c4eb7);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -25,11 +25,6 @@
 .download-button:active {
   transform: translateY(0);
   box-shadow: var(--shadow-sm);
-}
-
-.download-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
 }
 
 .download-icon {
