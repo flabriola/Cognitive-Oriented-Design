@@ -43,3 +43,8 @@
 /* optional: slightly larger when active + hovered */
 .nav-dot.active:hover { transform: scale(2.05); }
 
+@media (max-width: 600px) {
+  .bezel {
+    transform: translateX(-27%);
+  }
+}

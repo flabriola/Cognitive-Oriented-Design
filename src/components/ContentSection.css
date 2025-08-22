@@ -206,6 +206,9 @@
 /* Responsive */
 @media (max-width: 768px) {
   .content-section {
+    margin-left: -35vw;
+  }
+  .content-section {
     padding: var(--spacing-xl) 0;
     min-height: auto;
   }
