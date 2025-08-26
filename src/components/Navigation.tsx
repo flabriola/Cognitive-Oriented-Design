@@ -80,22 +80,26 @@ const Navigation: React.FC<NavigationProps> = ({
   }, [items, baseAngles, phase, cx, cy, R]);
 
   return (
-    <nav className="navigation">
+    <nav className="cod-navigation">
       <svg
-        className="bezel"
+        className="cod-bezel"
         width={svgWidth}
         height={svgHeight}
         viewBox={`0 0 ${svgWidth} ${svgHeight}`}
         preserveAspectRatio="xMinYMin slice"
       >
-        <path d={arcPath} className="bezel-arc" />
+        <path d={arcPath} className="cod-bezel-arc" />
 
         {dots.map(d => {
           const active = d.id === activeSection;
           return (
-            <g key={d.id} className="nav-node" transform={`translate(${d.x}, ${d.y})`}>
+            <g
+              key={d.id}
+              className="cod-nav-node"
+              style={{ transform: `translate(${d.x}px, ${d.y}px)` }}
+            >
               <circle
-                className={`nav-dot ${active ? "active" : ""}`}
+                className={`cod-nav-dot ${active ? "cod-active" : ""}`}
                 r={4}                               // <- fixed
                 onClick={() => onSectionChange(d.id)}
               />

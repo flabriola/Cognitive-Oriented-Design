@@ -4,27 +4,27 @@
   --color-dot-active: #5b6cff;
 }
 
-.navigation { pointer-events: none; }
-.bezel{
+.cod-navigation { pointer-events: none; }
+.cod-bezel{
   position: fixed;
   left: 0; top: 0;
   height: 100vh;
   z-index: 110;
 }
-.bezel-arc{
+.cod-bezel-arc{
   fill: none;
   stroke: var(--color-border);
   stroke-width: 2;
 }
 
 /* Smooth stepping when active changes */
-.nav-node{
+.cod-nav-node{
   transition: transform .6s cubic-bezier(.22,.61,.36,1); /* easeOutBack-ish */
   pointer-events: auto;
   cursor: pointer;
 }
 
-.nav-dot{
+.cod-nav-dot{
   fill: var(--color-dot);
   /* use the element's own box + centre for transforms */
   transform-box: fill-box;
@@ -33,18 +33,18 @@
               fill 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.nav-dot:hover { transform: scale(1.15); }
+.cod-nav-dot:hover { transform: scale(1.15); }
 
-.nav-dot.active{
+.cod-nav-dot.cod-active{
   fill: var(--color-dot-active);
   transform: scale(1.9); /* grows outwards from its centre */
 }
 
 /* optional: slightly larger when active + hovered */
-.nav-dot.active:hover { transform: scale(2.05); }
+.cod-nav-dot.cod-active:hover { transform: scale(2.05); }
 
 @media (max-width: 600px) {
-  .bezel {
+  .cod-bezel {
     transform: translateX(-27%);
   }
 }
