@@ -1,5 +1,7 @@
 # Cognitive-Oriented Design (COD) Website
 
+Visit page: https://flabriola.github.io/Cognitive-Oriented-Design/
+
 A minimalist, interactive website showcasing the Cognitive-Oriented Design paradigm.
 
 ## 🚀 Quick Start
