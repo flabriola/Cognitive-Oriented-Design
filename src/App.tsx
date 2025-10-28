@@ -53,52 +53,6 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [currentSectionIndex]);
 
-  // Route extension check for "/sanctuary"
-  if (window.location.pathname.endsWith('/sanctuary')) {
-    return (
-      // PDF Viewer for "Strategic Signals—Growth and Innovation Initiatives .pdf"
-      <div style={{ padding: '2rem', textAlign: 'center' }}>
-        <div style={{ margin: '1.5rem 0' }}>
-          <object
-            data={getAssetPath("/Strategic Signals—Growth and Innovation Initiatives .pdf")}
-            type="application/pdf"
-            width="80%"
-            height="600px"
-            aria-label="PDF Viewer"
-          >
-            <p>
-              Your browser does not support PDF viewing. You can{' '}
-              <a
-                href={getAssetPath("/Strategic Signals—Growth and Innovation Initiatives .pdf")}
-                download
-                style={{ color: '#007bff', textDecoration: 'underline' }}
-              >
-                download the PDF here
-              </a>
-              .
-            </p>
-          </object>
-        </div>
-        <a
-          href={getAssetPath("/Strategic Signals—Growth and Innovation Initiatives .pdf")}
-          download
-          className="pdf-download-link"
-          style={{
-            display: 'inline-block',
-            padding: '0.75rem 1.5rem',
-            color: '#000',
-            borderRadius: '6px',
-            textDecoration: 'none',
-            fontWeight: 600,
-            fontSize: '1rem',
-            marginTop: '1rem'
-          }}
-        >
-          Download PDF
-        </a>
-      </div>
-    )
-  }
 
   return (
     <div className="app">
@@ -108,6 +62,8 @@ function App() {
           activeSection={activeSection}
           onSectionChange={handleSectionChange}
         />
+
+        
       </div>
 
       <main className="main-content">
