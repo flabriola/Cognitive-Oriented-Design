@@ -3,7 +3,6 @@ import Navigation from './components/Navigation';
 import ContentSection from './components/ContentSection';
 import DownloadButton from './components/DownloadButton';
 import { SECTIONS } from './data/content';
-import { getAssetPath } from './utils/paths';
 import './styles/globals.css';
 import './App.css';
 
@@ -63,7 +62,7 @@ function App() {
           onSectionChange={handleSectionChange}
         />
 
-        
+
       </div>
 
       <main className="main-content">

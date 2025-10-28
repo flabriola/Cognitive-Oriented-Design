@@ -5,7 +5,7 @@ const DownloadButton: React.FC = () => {
   const handleDownload = () => {
     // Create a link element to trigger the download
     const link = document.createElement('a');
-    link.href = '/academic_paper.pdf';
+    link.href = './public/COD-whitepaper.pdf';
     link.download = 'Cognition-Oriented_Design_Academic_Paper.pdf';
     link.target = '_blank';
     
